@@ -10,6 +10,8 @@ terraform {
     bucket = "example-bucket"
     key    = "backend"
     region = "us-east-1"
+    // nome da tabela do dynamodb
+    dynamodb_table = "descomplicando-terraform"
   }
 }
 

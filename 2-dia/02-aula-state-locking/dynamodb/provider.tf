@@ -8,16 +8,11 @@ terraform {
 
   backend "s3" {
     bucket = "example-bucket"
-    key    = "backend"
+    key    = "backend-dynamodb"
     region = "us-east-1"
   }
 }
 
 provider "aws" {
   region = "us-east-1"
-}
-
-provider "aws" {
-  alias = "west"
-  region = "us-west-1"
 }
