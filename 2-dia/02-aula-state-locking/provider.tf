@@ -10,7 +10,7 @@ terraform {
     bucket = "example-bucket"
     key    = "backend"
     region = "us-east-1"
-    // nome da tabela do dynamodb
+    // nome da tabela do dynamodb, aqui já estamos aplicando o state locking
     dynamodb_table = "descomplicando-terraform"
   }
 }
