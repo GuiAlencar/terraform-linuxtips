@@ -1,0 +1,30 @@
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "web" {
+  ami           = var.ami
+  instance_type = "t3.micro"
+
+  tags = {
+    Name       = var.nome_instancia
+    Env        = var.environment
+    Plataforma = data.aws_ami.ubuntu.platform_details
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
